@@ -1,8 +1,8 @@
 function callTsApi(path, method, urlType, customHeaders) {
     const mainAppIframe = window.top.document.getElementById("main-app-iframe");
-    // const runtime = mainAppIframe.runtime;
     console.log(mainAppIframe);
-    // console.log(runtime);
+    const runtime = mainAppIframe.contentWindow.runtime;
+    console.log(runtime);
     method = method || 'GET';
     customHeaders = customHeaders || {};
     return new Promise((resolve, reject) => {
@@ -11,10 +11,10 @@ function callTsApi(path, method, urlType, customHeaders) {
         const header = Object.assign(
             {},
             {
-                // Authorization: runtime.accessToken,
+                Authorization: runtime.accessToken,
                 'Content-Type': 'application/json',
-                // 'X-Tradeshift-TenantId': runtime.companyId,
-                // 'X-Tradeshift-ActorId': runtime.userId,
+                'X-Tradeshift-TenantId': runtime.companyId,
+                'X-Tradeshift-ActorId': runtime.userId,
                 'X-Requested-With': 'XMLHttpRequest',
                 Accept: 'application/octet-stream, application/json'
             },
