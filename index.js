@@ -15,6 +15,7 @@ function callTsApi(path, method, urlType, customHeaders) {
                 'Content-Type': 'application/json',
                 'X-Tradeshift-TenantId': runtime.companyId,
                 'X-Tradeshift-ActorId': runtime.userId,
+                'X-Tradeshift-RequestId': runtime.requestId || '51cf0029-647c-4571-b060-e0dafabc0430',
                 'X-Requested-With': 'XMLHttpRequest',
                 Accept: 'application/octet-stream, application/json'
             },
