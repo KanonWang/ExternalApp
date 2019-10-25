@@ -1,3 +1,5 @@
+import uuid from 'uuid/v4';
+
 function callTsApi(path, method, urlType, customHeaders) {
     const mainAppIframe = window.top.document.getElementById("main-app-iframe");
     console.log(mainAppIframe);
@@ -15,7 +17,7 @@ function callTsApi(path, method, urlType, customHeaders) {
                 'Content-Type': 'application/json',
                 'X-Tradeshift-TenantId': runtime.companyId,
                 'X-Tradeshift-ActorId': runtime.userId,
-                'X-Tradeshift-RequestId': runtime.requestId || '51cf0029-647c-4571-b060-e0dafabc0430',
+                'X-Tradeshift-RequestId': runtime.requestId || uuid(),
                 'X-Requested-With': 'XMLHttpRequest',
                 Accept: 'application/octet-stream, application/json'
             },
@@ -46,13 +48,4 @@ function callTsApi(path, method, urlType, customHeaders) {
     });
 }
 
-ts.ui.ready(() => {
-    ts.ui.Header.title('My app');
-    ts.ui.Footer.buttons({
-        label: 'Continue',
-        type: 'ts-primary',
-        onclick: ()  => {
-            callTsApi('/v4/proxy/network/connections?limit=10&page=0&type=&omitConnections=false');
-        }
-    });
-});
+export default callTsApi;
