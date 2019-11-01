@@ -11,7 +11,7 @@ const getters = {
 
 // actions
 const actions = {
-    getConnections({commit}) {
+    getConnections({commit}){
         getConnections({ limit: 10, page: 0, connectionType:'' })
             .then(data => {
                 commit('setConnections', data)
@@ -21,8 +21,8 @@ const actions = {
 
 // mutations
 const mutations = {
-    setConnections(state, data) {
-        state = data;
+    setConnections(state, data){
+        state.items = data.Connection;
     },
 };
 

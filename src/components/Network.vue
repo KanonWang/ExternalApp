@@ -1,5 +1,12 @@
 <template>
-    <button class="test-class" @click="getConnections()">getConnections</button>
+    <div>
+        <button class="test-class" @click="reload()">reload</button>
+        <ul>
+            <li v-for="connection in connections" :key="connection.ConnectionId">
+                {{ connection.CompanyName }}
+            </li>
+        </ul>
+    </div>
 </template>
 
 <script>
@@ -10,9 +17,13 @@
             connections: state => state.Network.items
         }),
         methods: {
-            getConnections() {
+            reload() {
                 this.$store.dispatch('Network/getConnections')
             }
+        },
+        created() {
+            ts.ui.Header.title('External App');
+            this.$store.dispatch('Network/getConnections');
         }
     }
 </script>

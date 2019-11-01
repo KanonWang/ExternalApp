@@ -2,9 +2,7 @@ import uuid from 'uuid/v4';
 
 function callTsApi(path, method, urlType, customHeaders) {
     const mainAppIframe = window.top.document.getElementById("main-app-iframe");
-    console.log(mainAppIframe);
     const runtime = mainAppIframe.contentWindow.runtime;
-    console.log(runtime);
     method = method || 'GET';
     customHeaders = customHeaders || {};
     return new Promise((resolve, reject) => {
