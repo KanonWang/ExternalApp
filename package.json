@@ -4,9 +4,6 @@
   "description": "",
   "private": true,
   "dependencies": {
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
-    "react-scripts": "^3.2.0",
     "uuid": "^3.3.3",
     "vue": "^2.6.10",
     "vuex": "^3.1.1"
@@ -14,7 +11,6 @@
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",
-    "@babel/preset-react": "^7.6.3",
     "@vue/babel-helper-vue-jsx-merge-props": "^1.0.0",
     "@vue/babel-preset-jsx": "^1.1.1",
     "babel-loader": "^8.0.6",
@@ -37,13 +33,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KanonWang/KanonWang.github.io.git"
+    "url": "git+https://github.com/KanonWang/ExternalApp.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/KanonWang/KanonWang.github.io/issues"
+    "url": "https://github.com/KanonWang/ExternalApp/issues"
   },
-  "homepage": "https://github.com/KanonWang/KanonWang.github.io#readme"
+  "homepage": "https://github.com/KanonWang/ExternalApp#readme"
 }
