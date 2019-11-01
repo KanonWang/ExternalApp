@@ -1,22 +1,9 @@
-import './index.less';
-import React from "react";
-import ReactDOM from "react-dom";
-import { getConnections } from './services/NetworkService';
+import Vue from 'vue';
+import App from './components/App.vue';
+import store from './store';
 
-const App = () => {
-    return (
-        <div data-ts="App">
-            <div data-ts="Main">
-                <div data-ts="Content">
-                    <div data-ts="Panel">
-                        <button onClick={getConnections}>getConnections</button>
-                    </div>
-                </div>
-            </div>
-        </div>);
-};
-
-ReactDOM.render(
-    <App />,
-    document.getElementById('root')
-);
+new Vue({
+    el: '#root',
+    store,
+    render: h => h(App)
+});
