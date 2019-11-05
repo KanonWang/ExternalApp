@@ -1,29 +1,30 @@
 <template>
-    <div>
-        <button class="test-class" @click="reload()">reload</button>
-        <ul>
-            <li v-for="connection in connections" :key="connection.ConnectionId">
-                {{ connection.CompanyName }}
-            </li>
-        </ul>
-    </div>
+    <el-table :data="tableData">
+        <el-table-column prop="companyName" label="Company Name" width="180" />
+        <el-table-column prop="country" label="Country" />
+        <el-table-column prop="email" label="Email" />
+        <el-table-column prop="firstName" label="First Name" />
+        <el-table-column prop="lastName" label="Last Name" />
+        <el-table-column prop="connectionType" label="Connection Type" />
+    </el-table>
 </template>
 
 <script>
-    import { mapState } from 'vuex';
+    import { mapGetters } from 'vuex';
 
     export default {
-        computed: mapState({
-            connections: state => state.Network.items
-        }),
+        created() {
+            this.$store.dispatch('Network/getConnections');
+        },
+        computed: {
+            ...mapGetters({
+                tableData: 'Network/tableData'
+            })
+        },
         methods: {
             reload() {
                 this.$store.dispatch('Network/getConnections')
             }
-        },
-        created() {
-            ts.ui.Header.title('External App');
-            this.$store.dispatch('Network/getConnections');
         }
     }
 </script>

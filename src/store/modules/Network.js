@@ -6,7 +6,18 @@ const state = {
 
 // getters
 const getters = {
-
+    tableData: state =>
+        state.items.map(item =>
+            ({
+                connectionId: item.ConnectionId,
+                companyName: item.CompanyName || '',
+                country: item.Country || '',
+                email: item.Email || '',
+                firstName: item.FirstName || '',
+                lastName: item.LastName || '',
+                connectionType: item.ConnectionType || ''
+            })
+        )
 };
 
 // actions

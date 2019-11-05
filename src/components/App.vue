@@ -1,12 +1,7 @@
 <template>
-    <div data-ts="App">
-        <div data-ts="Main">
-            <div data-ts="Content">
-                <div data-ts="Panel">
-                    <Network/>
-                </div>
-            </div>
-        </div>
+    <div id="root">
+        <el-header>External App</el-header>
+        <Network/>
     </div>
 </template>
 
