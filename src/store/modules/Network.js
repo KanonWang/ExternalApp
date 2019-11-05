@@ -1,6 +1,11 @@
 import { getConnections } from '../../services/NetworkService';
 
 const state = {
+    loading: false,
+    query: '',
+    connectionType: '',
+    page: 0,
+    pages: 1,
     items: []
 };
 
@@ -22,18 +27,34 @@ const getters = {
 
 // actions
 const actions = {
-    getConnections({commit}){
-        getConnections({ limit: 10, page: 0, connectionType:'' })
+    getConnections({commit, state}){
+        commit('setLoading', true);
+        getConnections({ limit: 10, page: state.page, connectionType:state.connectionType })
             .then(data => {
-                commit('setConnections', data)
+                commit('setConnections', data);
+                commit('setLoading', false);
             })
     }
 };
 
 // mutations
 const mutations = {
+    setLoading(state, loading){
+        state.loading = loading;
+    },
     setConnections(state, data){
         state.items = data.Connection;
+        state.page = data.pageId;
+        state.pages = data.numPages;
+    },
+    setQuery(state, query){
+        state.query = query;
+    },
+    setPage(state, page){
+        state.page = page;
+    },
+    setConnectionType(state, connectionType){
+        state.connectionType = connectionType;
     },
 };
 

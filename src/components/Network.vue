@@ -1,5 +1,5 @@
 <template>
-    <el-table :data="tableData">
+    <el-table v-loading="loading" :data="tableData">
         <el-table-column prop="companyName" label="Company Name" width="180" />
         <el-table-column prop="country" label="Country" />
         <el-table-column prop="email" label="Email" />
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex';
+    import { mapState, mapGetters } from 'vuex';
 
     export default {
         created() {
@@ -19,20 +19,10 @@
         computed: {
             ...mapGetters({
                 tableData: 'Network/tableData'
+            }),
+            ...mapState({
+                loading: state => state.Network.loading
             })
-        },
-        methods: {
-            reload() {
-                this.$store.dispatch('Network/getConnections')
-            }
         }
     }
 </script>
-
-<style lang="less">
-    @test-color: pink;
-
-    .test-class {
-        color: @test-color;
-    }
-</style>
