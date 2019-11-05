@@ -3,10 +3,6 @@ const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
     entry: './src/index.js',
-    output: {
-        filename: 'main.js',
-        path: path.resolve(__dirname, 'dist'),
-    },
     module: {
         rules: [
             {
@@ -47,6 +43,17 @@ module.exports = {
                 }]
             }
         ]
+    },
+    optimization: {
+        splitChunks: {
+            chunks: "all",
+            cacheGroups: {
+                vendors: {
+                    test: /element-ui/,
+                    name: 'element-ui-vendor'
+                }
+            }
+        }
     },
     plugins: [
         new VueLoaderPlugin()
