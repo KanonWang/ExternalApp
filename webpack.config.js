@@ -1,7 +1,7 @@
 const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 
-module.exports = {
+const config = {
     entry: './src/index.js',
     module: {
         rules: [
@@ -57,5 +57,16 @@ module.exports = {
     },
     plugins: [
         new VueLoaderPlugin()
-    ]
+    ],
+    devServer: {
+        contentBase: './dist',
+        port: 9898
+    }
+};
+
+module.exports = (env, argv) => {
+    if (argv.mode === 'development') {
+        config.devtool = 'cheap-module-eval-source-map';
+    }
+    return config;
 };
